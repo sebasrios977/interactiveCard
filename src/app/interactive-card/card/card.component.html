@@ -1,0 +1,22 @@
+<section class="cards">
+    <div class="card--back">
+      <img class="card__image" src="../../../assets/images/bg-card-back.png" alt="card back">
+      <p class="card__cvc">{{myForm.controls['cvc'].value}}</p>
+    </div>
+
+    <div class="card--front">
+      <img class="card__image" src="../../../assets/images/bg-card-front.png" alt="card front">
+      <div class="card__info">
+        <h3 class="card__number">
+          {{myForm.controls['cardNumber'].value | slice:0:4}}
+          {{myForm.controls['cardNumber'].value | slice:4:8}}
+          {{myForm.controls['cardNumber'].value | slice:8:12}}
+          {{myForm.controls['cardNumber'].value | slice:12:16}}
+        </h3>
+        <div class="card__name-date">
+          <p class="card__name">{{myForm.controls['name'].value}}</p>
+          <p class="card__date">{{myForm.controls['month'].value}}/{{myForm.controls['year'].value}}</p>
+        </div>
+      </div>
+    </div>
+</section>

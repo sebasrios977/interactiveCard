@@ -1,0 +1,55 @@
+<form
+  class="form"
+  [formGroup]="myForm"
+  (ngSubmit)="submit()"
+>
+  <div class="form__field">
+    <p class="form__label">Cardholder name</p>
+    <input formControlName="name" type="text" class="form__input" placeholder="e.g. Jane Appleseed">
+    <span
+        *ngIf="myForm.controls['name'].errors && this.myForm.controls['name'].touched"
+        class="form__error"
+      >
+        Can't be blank
+      </span>
+  </div>
+  <div class="form__field">
+    <p class="form__label">Card number</p>
+    <input formControlName="cardNumber" type="number" class="form__input" placeholder="e.g. 1234 5678 9123 0000">
+    <span
+      *ngIf="this.myForm.controls['cardNumber'].errors && this.myForm.controls['cardNumber'].touched"
+      class="form__error"
+    >
+      Wrong Format
+    </span>
+  </div>
+  <div class="form__field-date-cvc">
+    <div class="form__expiration-date">
+      <p class="form__label">Exp. Date (MM/YY)</p>
+      <div class="form__date">
+        <input formControlName="month" type="number" class="form__input--month" placeholder="MM" min="1" max="12">
+        <input formControlName="year" type="number" class="form__input--year" placeholder="YY" min="23" max="30">
+      </div>
+      <span
+        *ngIf="myForm.controls['month'].errors && this.myForm.controls['month'].touched ||
+              myForm.controls['year'].errors && this.myForm.controls['year'].touched"
+        class="form__error"
+      >
+        Can't be blank
+      </span>
+
+    </div>
+    <div class="form__code">
+      <p class="form__label">CVC</p>
+      <input formControlName="cvc" type="number" class="form__input-cvc" placeholder="e.g. 123">
+      <span
+        *ngIf="myForm.controls['cvc'].errors && this.myForm.controls['cvc'].touched"
+        class="form__error"
+      >
+        Can't be blank
+      </span>
+    </div>
+  </div>
+
+  <button type="submit" class="form__submit">Confirm</button>
+</form>
